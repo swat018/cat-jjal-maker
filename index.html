@@ -37,7 +37,12 @@
 <script type="text/babel">
     console.log("야옹");
 
-    const title = <h1>1번째 고양이 가라사대2</h1>;
+    const Title = (props) => {
+        console.log(props);
+        return (
+            <h1>{props.children}</h1>
+        );
+    }
 
     const form = (
         <form>
@@ -46,56 +51,44 @@
         </form>
     )
 
-    const catItem = (
-        <li>
-            <img src="https://cataas.com/cat/60b73094e04e18001194a309/says/react"/>
-        </li>
-    );
-
-    const favorites = (
-        <ul className="favorites">
-            {catItem}
-            {catItem}
-            {catItem}
-        </ul>
-    );
-
-    const mainCard = (
-        <div className="main-card">
-            <img
-                src="https://cataas.com/cat/60b73094e04e18001194a309/says/react"
-                alt="고양이"
-                width="400"
-            />
-            <button>🤍</button>
-        </div>
-    );
-
-    function sayHello(name) {
-        return "안녕 + " + name;
+    function CatItem(props) {
+        return (
+            <li>
+                <img src={props.img}/>
+            </li>
+        )
     }
 
-    sayHello('진우');
-
-    function Card(title, description) {
+    function Favorites() {
         return (
-            <div>
-                <h2>{title}</h2>
-                {description}
+            <ul className="favorites">
+                <CatItem img="https://cataas.com//cat/5e9970351b7a400011744233/says/inflearn"/>
+                <CatItem img="https://cataas.com/cat/595f280b557291a9750ebf65/says/JavaScript"/>
+            </ul>
+        )
+    };
+
+    const MainCard = () => {
+        return (
+            <div className="main-card">
+                <img
+                    src="https://cataas.com/cat/60b73094e04e18001194a309/says/react"
+                    alt="고양이"
+                    width="400"
+                />
+                <button>🤍</button>
             </div>
+
         );
     }
 
-    Card('리액트 짱', '리액트 입니다');
-
-    <Card title="리액트짱" description="리액트 입니다"/>
-
     const app = (
         <div>
-            {title}
+            <Title>1번째 고양이 가라사대</Title>
+            <Title>2번째 고양이 가라사대</Title>
             {form}
-            {mainCard}
-            {favorites}
+            <MainCard/>
+            <Favorites/>
         </div>
     );
     const 여기다가그려 = document.querySelector('#app');
