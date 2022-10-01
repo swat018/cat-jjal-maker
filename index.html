@@ -44,12 +44,22 @@
         );
     }
 
-    const Form = () => (
-        <form>
-            <input type="text" name="name" placeholder="영어 대사를 입력해주세요"/>
-            <button type="submit">생성</button>
-        </form>
-    )
+    const Form = () => {
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            console.log("폼 전송됨");
+        }
+
+        return (
+            <form onSubmit={handleFormSubmit}>
+                <input
+                    type="text"
+                    name="name"
+                    laceholder="영어 대사를 입력해주세요"/>
+                <button type="submit">생성</button>
+            </form>
+        );
+    };
 
     function CatItem(props) {
         return (
@@ -72,10 +82,23 @@
     };
 
     const MainCard = ({img}) => {
+        function handleHeartClick() {
+            console.log("하트 눌렀음");
+        }
+
+        function handleHeartMouseOver() {
+            console.log("하트 스쳐 지나감");
+        }
+
         return (
             <div className="main-card">
                 <img src={img} alt="고양이" width="400"/>
-                <button>🤍</button>
+                <button
+                    onClick={handleHeartClick}
+                    onMouseOver={handleHeartMouseOver}
+                >
+                    🤍
+                </button>
             </div>
 
         );
@@ -84,7 +107,7 @@
     const app = (
         <div>
             <Title>1번째 고양이 가라사대</Title>
-            <Title>2 번째 고양이 가라사대</Title>
+            <Title>2번째 고양이 가라사대</Title>
             <Form/>
             <MainCard img="https://cataas.com/cat/60b73094e04e18001194a309/says/react"/>
             <Favorites/>
