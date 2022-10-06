@@ -152,8 +152,9 @@
             setInitialCat();
         }, [])
 
-        // setInitialCat();
-
+        React.useEffect(() => {
+            console.log("헬로");
+        }, [counter])
 
         async function updateMainCat(value) {
             const newCat = await fetchCat(value);
